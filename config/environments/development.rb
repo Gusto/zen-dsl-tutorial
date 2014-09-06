@@ -32,6 +32,12 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.after_initialize do
+    ActionDispatch::Callbacks.to_prepare do
+      Dir["#{Rails.root}/app/states/*.rb"].each { |f| load f }
+    end
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
