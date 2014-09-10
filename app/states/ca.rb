@@ -5,11 +5,11 @@ StateBuilder.build('CA') do
   end
   
   employee do
+    withholding_allowance { max 20 }
+    additional_withholding { max 4 }
+
     filing_status do
       options ['Single', 'Married', 'Married withhold as Single', 'Exempt']
     end
-
-    withholding_allowance { max 20 }
-    additional_withholding { max 4 }
   end
 end
