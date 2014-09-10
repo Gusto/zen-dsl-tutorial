@@ -14,10 +14,10 @@ class StateBuilder
   end
 
   def company(&block)
-    # Configure CompanyStateField::CA
+    StateBuilder::CompanyScope.new(@state, &block)
   end
 
   def employee(&block)
-    # Configure EmployeeStateField::CA
+    StateBuilder::EmployeeScope.new(@state, &block)
   end
 end
