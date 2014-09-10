@@ -1,13 +1,7 @@
 StateBuilder.build('CA') do
   company do
-    edd do
-      format '###-####-#'
-    end
-
-    sos do
-      setup_optional
-      format '###'
-    end
+    edd { format '/\d{3}-\d{4}-\d/' }
+    sos { format '/\d{4}/' }
   end
   
   employee do
@@ -15,13 +9,7 @@ StateBuilder.build('CA') do
       options ['Single', 'Married', 'Married withhold as Single', 'Exempt']
     end
 
-    withholding_allowance do
-      max 20
-    end
-
-    additional_withholding do
-      setup_optional
-      max 4
-    end
+    withholding_allowance { max 20 }
+    additional_withholding { max 4 }
   end
 end
